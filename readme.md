@@ -1,0 +1,41 @@
+## Installation
+
+```bash
+  cd websocket-coppyfy
+  yarn
+```
+
+## Variáveis de Ambiente
+
+```bash
+  # NOSQL DATABASE
+RETHINK_DB_HOST=
+RETHINK_DB_PORT=
+RETHINK_DB_PASSWORD=
+RETHINK_DB_DB=
+RETHINK_DB_TABLE_NAME=
+
+# POSTGRESQL DATABASE
+POSTGRES_DATABASE_HOST=
+POSTGRES_DATABASE_PORT=
+POSTGRES_DATABASE_USER=
+POSTGRES_DATABASE_PASSWORD=
+POSTGRES_DATABASE_DB=
+
+# REDIS DB
+
+REDIS_HOST=
+REDIS_PORT=
+
+# APPLICATION PORT
+
+PORT_APP=8081
+
+ALLOW_DOMAINS=http://localhost:3000
+```
+
+## Development
+
+```bash
+  yarn dev
+```

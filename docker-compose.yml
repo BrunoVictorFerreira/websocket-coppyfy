@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+  # SERVIÇO POSTGRESQL
+  postgres:
+    restart: always
+    image: postgres:11-alpine
+    ports:
+      - "5433:5432"
+    # env_file: ${PATH_CONFIG_POSTGRES}
+    environment:
+      - POSTGRES_DB=dthoje_pivot
+      - POSTGRES_USER=default
+      - POSTGRES_PASSWORD=secret
+    volumes:
+      - ./database/postgres:/var/lib/postgresql/data
+
+  # RETHINKDB
+  rethinkdb:
+    restart: always
+    image: rethinkdb:latest
+    ports:
+      - "28015:28015"
+      - "81:8080"
+      - "29015:29015"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        rethinkdb create --initial-password  admin
+        rethinkdb --bind all
+    volumes:
+      - ./database/rethinkdb:/data
+
+  redis:
+    restart: always
+    image: redis:3.2.5-alpine
+    volumes:
+      - ./database/redis_data:/var/lib/redis
+    ports:
+      - "6379:6379"
